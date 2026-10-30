@@ -1,0 +1,235 @@
+/* ESTILO GENERAL */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f1f5f9;
+    color: #1e293b;
+}
+
+/* ENCABEZADO */
+.encabezado {
+    background-color: #173b63;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.contenedor {
+    width: 90%;
+    max-width: 1100px;
+    margin: 25px auto;
+}
+
+/* TARJETAS */
+.tarjeta {
+    background-color: white;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #cccccc;
+}
+
+h1, h2 {
+    margin-top: 0;
+}
+
+/* FORMULARIO */
+.fila-registro {
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    flex: 1;
+}
+
+input, select {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+}
+
+/* BOTONES */
+button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2563eb;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1d4ed8;
+}
+
+/* MENSAJE */
+#mensaje {
+    font-weight: bold;
+}
+
+/* FILTROS CON FLEXBOX */
+.filtros {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.caja-filtro {
+    flex: 1;
+    text-align: center;
+    background-color: #eaf1f8;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.caja-filtro button {
+    width: 100%;
+}
+
+.caja-filtro p {
+    margin: 0 0 10px;
+}
+
+/* LISTA DE ESTUDIANTES */
+#listaEstudiantes {
+    margin-top: 15px;
+}
+
+/* PIE DE PÁGINA */
+footer {
+    background-color: #173b63;
+    color: white;
+    text-align: center;
+    padding: 18px;
+}
+
+
+/* TABLA DE ESTUDIANTES */
+.tabla-contenedor {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    min-width: 480px;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #cbd5e1;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #173b63;
+    color: white;
+}
+
+/* BOTÓN VISTO */
+.visto {
+    background-color: #16a34a;
+}
+
+.visto:hover {
+    background-color: #15803d;
+}
+
+/* BOTÓN BORRAR */
+.borrar {
+    background-color: #dc2626;
+}
+
+.borrar:hover {
+    background-color: #b91c1c;
+}
+
+/* ESTUDIANTE COMPLETADO */
+.completado {
+    background-color: #dcfce7;
+}
+
+.visto:disabled {
+    background-color: #64748b;
+    cursor: default;
+}
+
+
+
+@media (min-width: 1024px) {
+
+    .fila-registro {
+        flex-direction: row;
+    }
+
+    .filtros {
+        flex-direction: row;
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    .fila-registro {
+        flex-wrap: wrap;
+    }
+
+    .campo {
+        flex: 1 1 40%;
+    }
+
+    .fila-registro button {
+        flex: 1 1 40%;
+    }
+
+    .filtros {
+        flex-wrap: wrap;
+    }
+
+    .caja-filtro {
+        flex: 1 1 30%;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .contenedor {
+        width: 95%;
+    }
+
+    .tarjeta {
+        padding: 15px;
+    }
+
+    .fila-registro {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .campo {
+        width: 100%;
+    }
+
+    .fila-registro button {
+        width: 100%;
+    }
+
+    .filtros {
+        flex-direction: column;
+    }
+
+    .caja-filtro {
+        width: 100%;
+    }
+}

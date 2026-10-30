@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Estudiantes</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header class="encabezado">
+        <h1>Registro de Estudiantes</h1>
+        <p>Sistema de control de estudiantes</p>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="contenedor">
+
+        <!-- REGISTRAR ESTUDIANTE -->
+        <section id="registro" class="tarjeta">
+
+            <h2>Agregar estudiante</h2>
+            
+            <form id="formulario">
+
+            <div class="campo">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre"
+                   placeholder="Nombre del estudiante"
+                   required>
+          </div>
+
+        <!-- MATERIA -->
+        <div class="campo">
+            <label for="materia">Materia:</label>
+            <select id="materia" required>
+                <option value="">Escoger materia</option>
+                <option value="HTML">HTML</option>
+                <option value="CSS">CSS</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Base de Datos">Base de Datos</option>
+                <option value="Python">Python</option>
+            </select>
+        </div>
+
+        <!-- FECHA -->
+        <div class="campo">
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" required>
+        </div>
+
+        <!-- BOTÓN -->
+        <button type="submit">
+            Agregar estudiante
+        </button>
+
+        </div>
+
+    </form>
+
+            <p id="mensaje"></p>
+
+        </section>
+
+        <!-- FILTRAR ESTUDIANTES -->
+        <section id="estudiantes" class="tarjeta">
+
+            <h2>Filtrar estudiantes</h2>
+
+            <!-- SEIS CAJAS FLEXBOX -->
+            <div class="filtros">
+
+                <div class="caja-filtro">
+                    <button id="todos">Todos</button>
+                </div>
+
+                <div class="caja-filtro">
+                    <button id="pendientes">Pendientes</button>
+                </div>
+
+                <div class="caja-filtro">
+                    <button id="completos">Completos</button>
+                </div>
+
+                <div class="caja-filtro">
+                    <p>Total</p>
+                    <strong id="total">0</strong>
+                </div>
+
+                <div class="caja-filtro">
+                    <p>Pendientes</p>
+                    <strong id="totalPendientes">0</strong>
+                </div>
+
+                <div class="caja-filtro">
+                    <p>Completos</p>
+                    <strong id="totalCompletos">0</strong>
+                </div>
+
+            </div>
+
+            <!-- LISTA DE ESTUDIANTES -->
+            <h2>Lista de estudiantes</h2>
+
+            <div id="listaEstudiantes"></div>
+
+            <div class="tabla-contenedor">
+
+             <table>
+
+             <thead>
+               <tr>
+                 <th>Estudiante</th>
+                 <th>Fecha</th>
+                 <th>Visto</th>
+                 <th>Borrar</th>
+            </tr>
+             </thead>
+
+        <tbody id="listaEstudiantes">
+        </tbody>
+
+    </table>
+
+</div>
+
+
+        </section>
+
+    </main>
+
+
+</body>
+</html>
