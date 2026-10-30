@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -17,61 +18,55 @@
         <p>Sistema de control de estudiantes</p>
     </header>
 
-    <!-- CONTENEDOR PRINCIPAL -->
     <main class="contenedor">
 
-        <!-- REGISTRAR ESTUDIANTE -->
-        <section id="registro" class="tarjeta">
+        <!-- AGREGAR ESTUDIANTE -->
+        <section class="tarjeta">
 
             <h2>Agregar estudiante</h2>
-            
+
             <form id="formulario">
 
-            <div class="campo">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre"
-                   placeholder="Nombre del estudiante"
-                   required>
-          </div>
+                <div class="fila-registro">
 
-        <!-- MATERIA -->
-        <div class="campo">
-            <label for="materia">Materia:</label>
-            <select id="materia" required>
-                <option value="">Escoger materia</option>
-                <option value="HTML">HTML</option>
-                <option value="CSS">CSS</option>
-                <option value="JavaScript">JavaScript</option>
-                <option value="Base de Datos">Base de Datos</option>
-                <option value="Python">Python</option>
-            </select>
-        </div>
+                    <div class="campo">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre"
+                               placeholder="Nombre del estudiante" required>
+                    </div>
 
-        <!-- FECHA -->
-        <div class="campo">
-            <label for="fecha">Fecha:</label>
-            <input type="date" id="fecha" required>
-        </div>
+                    <div class="campo">
+                        <label for="materia">Materia:</label>
+                        <select id="materia" required>
+                            <option value="">Escoger materia</option>
+                            <option>HTML</option>
+                            <option>CSS</option>
+                            <option>JavaScript</option>
+                            <option>Base de Datos</option>
+                            <option>Python</option>
+                        </select>
+                    </div>
 
-        <!-- BOTÓN -->
-        <button type="submit">
-            Agregar estudiante
-        </button>
+                    <div class="campo">
+                        <label for="fecha">Fecha:</label>
+                        <input type="date" id="fecha" required>
+                    </div>
 
-        </div>
+                    <button type="submit">Agregar estudiante</button>
 
-    </form>
+                </div>
+
+            </form>
 
             <p id="mensaje"></p>
 
         </section>
 
         <!-- FILTRAR ESTUDIANTES -->
-        <section id="estudiantes" class="tarjeta">
+        <section class="tarjeta">
 
             <h2>Filtrar estudiantes</h2>
 
-            <!-- SEIS CAJAS FLEXBOX -->
             <div class="filtros">
 
                 <div class="caja-filtro">
@@ -103,36 +98,33 @@
 
             </div>
 
-            <!-- LISTA DE ESTUDIANTES -->
-            <h2>Lista de estudiantes</h2>
+        </section>
 
-            <div id="listaEstudiantes"></div>
+        <!-- LISTA DE ESTUDIANTES -->
+        <section class="tarjeta">
+
+            <h2>Lista de estudiantes</h2>
 
             <div class="tabla-contenedor">
 
-             <table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Estudiante</th>
+                            <th>Fecha</th>
+                            <th>Visto</th>
+                            <th>Borrar</th>
+                        </tr>
+                    </thead>
 
-             <thead>
-               <tr>
-                 <th>Estudiante</th>
-                 <th>Fecha</th>
-                 <th>Visto</th>
-                 <th>Borrar</th>
-            </tr>
-             </thead>
+                    <tbody id="listaEstudiantes"></tbody>
+                </table>
 
-        <tbody id="listaEstudiantes">
-        </tbody>
-
-    </table>
-
-</div>
-
+            </div>
 
         </section>
 
     </main>
-
 
 </body>
 </html>

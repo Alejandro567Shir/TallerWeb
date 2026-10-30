@@ -18,14 +18,13 @@ body {
     padding: 25px;
 }
 
-/* CONTENEDOR PRINCIPAL */
+/* CONTENEDOR Y TARJETAS */
 .contenedor {
     width: 90%;
     max-width: 1100px;
     margin: 25px auto;
 }
 
-/* TARJETAS */
 .tarjeta {
     background-color: white;
     padding: 25px;
@@ -48,8 +47,9 @@ h1, h2 {
 .campo {
     display: flex;
     flex-direction: column;
-    gap: 7px;
     flex: 1;
+    gap: 7px;
+    min-width: 0;
 }
 
 input, select {
@@ -73,20 +73,19 @@ button:hover {
     background-color: #1d4ed8;
 }
 
-/* MENSAJE */
 #mensaje {
     font-weight: bold;
 }
 
-/* FILTROS CON FLEXBOX */
+/* FLEXBOX DE FILTROS */
 .filtros {
     display: flex;
+    flex-wrap: wrap;
     gap: 12px;
-    margin-bottom: 25px;
 }
 
 .caja-filtro {
-    flex: 1;
+    flex: 1 1 30%;
     text-align: center;
     background-color: #eaf1f8;
     padding: 15px;
@@ -101,21 +100,7 @@ button:hover {
     margin: 0 0 10px;
 }
 
-/* LISTA DE ESTUDIANTES */
-#listaEstudiantes {
-    margin-top: 15px;
-}
-
-/* PIE DE PÁGINA */
-footer {
-    background-color: #173b63;
-    color: white;
-    text-align: center;
-    padding: 18px;
-}
-
-
-/* TABLA DE ESTUDIANTES */
+/* TABLA */
 .tabla-contenedor {
     overflow-x: auto;
 }
@@ -137,25 +122,15 @@ th {
     color: white;
 }
 
-/* BOTÓN VISTO */
+/* ESTADOS Y ACCIONES */
 .visto {
     background-color: #16a34a;
 }
 
-.visto:hover {
-    background-color: #15803d;
-}
-
-/* BOTÓN BORRAR */
 .borrar {
     background-color: #dc2626;
 }
 
-.borrar:hover {
-    background-color: #b91c1c;
-}
-
-/* ESTUDIANTE COMPLETADO */
 .completado {
     background-color: #dcfce7;
 }
@@ -165,43 +140,19 @@ th {
     cursor: default;
 }
 
-
-
-@media (min-width: 1024px) {
-
-    .fila-registro {
-        flex-direction: row;
-    }
-
-    .filtros {
-        flex-direction: row;
-    }
-}
-
-
+/* TABLET: 768PX A 1023PX */
 @media (min-width: 768px) and (max-width: 1023px) {
 
     .fila-registro {
         flex-wrap: wrap;
     }
 
-    .campo {
+    .campo, .fila-registro button {
         flex: 1 1 40%;
-    }
-
-    .fila-registro button {
-        flex: 1 1 40%;
-    }
-
-    .filtros {
-        flex-wrap: wrap;
-    }
-
-    .caja-filtro {
-        flex: 1 1 30%;
     }
 }
 
+/* MÓVIL: MENOS DE 768PX */
 @media (max-width: 767px) {
 
     .contenedor {
@@ -212,24 +163,12 @@ th {
         padding: 15px;
     }
 
-    .fila-registro {
+    .fila-registro, .filtros {
         flex-direction: column;
         align-items: stretch;
     }
 
-    .campo {
-        width: 100%;
-    }
-
-    .fila-registro button {
-        width: 100%;
-    }
-
-    .filtros {
-        flex-direction: column;
-    }
-
-    .caja-filtro {
+    .campo, .caja-filtro {
         width: 100%;
     }
 }

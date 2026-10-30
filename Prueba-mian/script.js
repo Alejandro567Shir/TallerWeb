@@ -2,38 +2,33 @@
 // ARREGLO PRINCIPAL
 const estudiantes = [];
 
-// OBTENER ELEMENTOS
 const formulario = document.getElementById("formulario");
 const lista = document.getElementById("listaEstudiantes");
 const mensaje = document.getElementById("mensaje");
+
+let filtro = "Todos";
 
 // AGREGAR ESTUDIANTE
 formulario.addEventListener("submit", function(evento) {
 
     evento.preventDefault();
 
-    // OBTENER DATOS
     const nombre = document.getElementById("nombre").value.trim();
     const materia = document.getElementById("materia").value;
     const fecha = document.getElementById("fecha").value;
 
-    // VALIDAR
     if (nombre === "" || materia === "" || fecha === "") {
         mensaje.textContent = "Complete todos los campos.";
         mensaje.style.color = "red";
         return;
     }
 
-    // CREAR ESTUDIANTE
-    const estudiante = {
+    estudiantes.push({
         nombre: nombre,
         materia: materia,
         fecha: fecha,
         estado: "Pendiente"
-    };
-
-    // GUARDAR ESTUDIANTE
-    estudiantes.push(estudiante);
+    });
 
     mostrarEstudiantes();
     formulario.reset();
@@ -48,77 +43,96 @@ function mostrarEstudiantes() {
 
     lista.innerHTML = "";
 
-    estudiantes.forEach(function(estudiante) {
+    // OCULTAR TABLA CUANDO NO HAY ESTUDIANTES
+    document.querySelector(".tabla-contenedor").style.display =
+        estudiantes.length === 0 ? "none" : "block";
 
-        // CREAR FILA
+    // FILTRAR ESTUDIANTES
+    let resultado = estudiantes;
+
+    if (filtro !== "Todos") {
+        resultado = estudiantes.filter(function(estudiante) {
+            return estudiante.estado === filtro;
+        });
+    }
+
+    // CREAR FILAS
+    resultado.forEach(function(estudiante) {
+
         const fila = document.createElement("tr");
 
-        // NOMBRE
-        const celdaNombre = document.createElement("td");
-        celdaNombre.textContent = estudiante.nombre;
+        const nombre = document.createElement("td");
+        nombre.textContent = estudiante.nombre + " - " + estudiante.materia;
 
-        // FECHA
-        const celdaFecha = document.createElement("td");
-        celdaFecha.textContent = estudiante.fecha;
+        const fecha = document.createElement("td");
+        fecha.textContent = estudiante.fecha;
 
         // BOTÓN VISTO
         const celdaVisto = document.createElement("td");
-        const botonVisto = document.createElement("button");
+        const visto = document.createElement("button");
 
-        botonVisto.textContent = "✓ Visto";
-        botonVisto.className = "visto";
+        visto.textContent = "✓ Visto";
+        visto.className = "visto";
 
-        botonVisto.addEventListener("click", function() {
+        visto.addEventListener("click", function() {
             estudiante.estado = "Completo";
             mostrarEstudiantes();
         });
 
-        celdaVisto.appendChild(botonVisto);
+        celdaVisto.appendChild(visto);
 
         // BOTÓN BORRAR
         const celdaBorrar = document.createElement("td");
-        const botonBorrar = document.createElement("button");
+        const borrar = document.createElement("button");
 
-        botonBorrar.textContent = "Borrar";
-        botonBorrar.className = "borrar";
+        borrar.textContent = "Borrar";
+        borrar.className = "borrar";
 
-        botonBorrar.addEventListener("click", function() {
-
+        borrar.addEventListener("click", function() {
             const posicion = estudiantes.indexOf(estudiante);
             estudiantes.splice(posicion, 1);
-
             mostrarEstudiantes();
         });
 
-        celdaBorrar.appendChild(botonBorrar);
+        celdaBorrar.appendChild(borrar);
 
-        // ESTUDIANTE COMPLETADO
+        // ESTADO COMPLETADO
         if (estudiante.estado === "Completo") {
             fila.className = "completado";
-            botonVisto.disabled = true;
+            visto.disabled = true;
         }
 
-        // AGREGAR CELDAS
-        fila.append(
-            celdaNombre,
-            celdaFecha,
-            celdaVisto,
-            celdaBorrar
-        );
-
+        fila.append(nombre, fecha, celdaVisto, celdaBorrar);
         lista.appendChild(fila);
     });
 
     // ACTUALIZAR CONTADORES
+    const completos = estudiantes.filter(function(estudiante) {
+        return estudiante.estado === "Completo";
+    }).length;
+
     document.getElementById("total").textContent = estudiantes.length;
-
     document.getElementById("totalPendientes").textContent =
-        estudiantes.filter(function(estudiante) {
-            return estudiante.estado === "Pendiente";
-        }).length;
-
-    document.getElementById("totalCompletos").textContent =
-        estudiantes.filter(function(estudiante) {
-            return estudiante.estado === "Completo";
-        }).length;
+        estudiantes.length - completos;
+    document.getElementById("totalCompletos").textContent = completos;
 }
+
+
+// BOTONES PARA FILTRAR
+document.getElementById("todos").addEventListener("click", function() {
+    filtro = "Todos";
+    mostrarEstudiantes();
+});
+
+document.getElementById("pendientes").addEventListener("click", function() {
+    filtro = "Pendiente";
+    mostrarEstudiantes();
+});
+
+document.getElementById("completos").addEventListener("click", function() {
+    filtro = "Completo";
+    mostrarEstudiantes();
+});
+
+// MOSTRAR ESTADO INICIAL
+mostrarEstudiantes();
